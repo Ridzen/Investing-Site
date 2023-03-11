@@ -83,6 +83,7 @@ class BusinessDetailUpdateAPIView(generics.UpdateAPIView):
 class BusinessDetailGetAPIView(generics.RetrieveAPIView):
     queryset = BusinessDetail.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = BusinessDetailSerializer
 
     def get(self, request, pk):
         try:
