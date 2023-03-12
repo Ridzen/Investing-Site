@@ -45,6 +45,7 @@ CLOUDINARY_URL = 'cloudinary://851917814973718:K6cjG18m05MeHMUcKiEvk73q38Q@produ
 
 INSTALLED_APPS = [
     # System apps
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +57,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
-    'jazzmin',
 
     # Parler,
     'cloudinary',
