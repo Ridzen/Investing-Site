@@ -6,6 +6,7 @@ from .models import Investor, BusinessOwner, BlockedUser
 
 
 class AuthorizationSerializer(TokenObtainPairSerializer):
+
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)

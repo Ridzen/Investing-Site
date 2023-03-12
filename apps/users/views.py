@@ -8,11 +8,11 @@ from rest_framework import (generics, permissions)
 from rest_framework.permissions import IsAdminUser
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .models import (Investor, BusinessOwner)
-from .serializers import (AuthorizationSerializer, UserSerializer,
-                          BusinessOwnerSerializer, InvestorSerializer)
-from ..business.models import Business
-from ..business.serializers import BusinessSerializer
+from apps.users.models import (Investor, BusinessOwner)
+from apps.users.serializers import (AuthorizationSerializer, UserSerializer,
+                                    BusinessOwnerSerializer, InvestorSerializer)
+from apps.business.models import Business
+from apps.business.serializers import BusinessSerializer
 
 
 class Authorization(TokenObtainPairView):

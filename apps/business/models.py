@@ -12,11 +12,13 @@ from apps.users.models import BusinessOwner
 
 class Category(models.Model):
     """
-    Моделька категорий
+    Моделька категорий, для того чтобы понимали в какой сфере бизнес, с полями
+    id, title
     """
     title = models.CharField(
         max_length=255, null=False, blank=False,
-        verbose_name='Название Категории',  help_text='Название Категории', default='Введите ваш текст'
+        verbose_name='Название Категории',  help_text='Название Категории',
+        default='Введите ваш текст'
     )
 
     class Meta:
@@ -30,7 +32,8 @@ class Category(models.Model):
 class Business(models.Model):
     """
     Моделька для публикации объявлений о бизнесе с полями
-    title,
+    id, title, image, owner, budget, currency, term, description, is_active, is_premium
+    category, location, created_at
     """
 
     title = models.CharField(
@@ -46,13 +49,14 @@ class Business(models.Model):
         max_digits=10, decimal_places=2, verbose_name='Сумма инвестиций'
     )
     currency = models.CharField(
-        max_length=20, verbose_name='Валюта не успел сделать Choices', null=False, blank=False, help_text='Валюта'
+        max_length=20, verbose_name='Валюта', null=False, blank=False,
+        help_text='Валюта, отправляется в любом формате'
     )
     term = models.CharField(
         verbose_name='Срок окупаемости', help_text='Срок за сколько окупится проект', max_length=255
     )
     description = models.TextField(
-        verbose_name='Описание', help_text='Описание Объявления'
+        verbose_name='Описание', help_text='Подробное описание объявления'
     )
     is_active = models.BooleanField(
         default=True, verbose_name="Активный ли пользователь"
@@ -65,7 +69,7 @@ class Business(models.Model):
         max_length=100, null=True, blank=True, verbose_name='Сфера деятельности', help_text='Категории'
     )
     location = models.CharField(
-        max_length=50, null=True, blank=True, verbose_name='Локация(Город страна)'
+        max_length=50, null=True, blank=True, verbose_name='Локация(Город)'
     )
     created_at = models.DateField(
         auto_now_add=True, verbose_name='Дата создания поста', help_text='Дата создания поста'
@@ -82,7 +86,8 @@ class Business(models.Model):
 
 class BusinessDetail(models.Model):
     """
-    Моделька Деталей Бизнеса
+    Моделька подробного ознакомления с объявлением, с полями
+    business, file, contact
     """
     business = models.ForeignKey(
         Business, on_delete=models.CASCADE, verbose_name='Бизнес от которого он наследуется',
